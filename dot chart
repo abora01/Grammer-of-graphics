@@ -1,0 +1,15 @@
+Data group by test category, positive/negatives values are grouped with numbers to assign color.
+R code:
+#summarize
+medPrice = ddply(perc, "Test", summarize, median=median(Error))
+#sort
+medPrice = medPrice[order(medPrice$median), ]
+medPrice$median1 <- medPrice$median
+as.character(medPrice$median1)
+medPrice$group <- ifelse(medPrice$median < "0" ,0,1)
+#color
+medPrice$color[medPrice$group == 0] <- "red"
+medPrice$color[medPrice$group == 1] <- "blue"
+#chart
+dotchart(medPrice$median, medPrice$Test, pch=16, color = medPrice$color,
+         xlab = "Median Error", main = "Median Error by Test")  
