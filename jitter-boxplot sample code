@@ -1,0 +1,12 @@
+ggplot(perc,aes(Test,AbsoluteError)) +  geom_boxplot(aes(fill=Test)) + 
+  geom_jitter(color="darkred", alpha=0.2,size=2, width = .3) + coord_flip()
+
+n <- nrow(perc)
+
+ggplot(perc,aes(reorder(Test,AbsoluteError),AbsoluteError))  + geom_boxplot(aes(fill=Test)) + 
+  geom_point(aes(x=as.numeric(Test) + 
+    rnorm(n,0,0.05), y=AbsoluteError), color = "darkgreen", alpha = 0.3, size =2) +
+  coord_flip()
+
+
+
