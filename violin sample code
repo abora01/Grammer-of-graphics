@@ -1,0 +1,15 @@
+install.packages("Hmisc")
+library(Hmisc)
+
+ggplot(perc,aes(reorder(Test,Error),Error, fill = Test)) + geom_violin(fill="white") + 
+  geom_point(aes(x=as.numeric(Test) + rnorm(n,0,0.1) , y=Error),color = "darkgreen",alpha = 0.05,size=2) + 
+  coord_flip() + xlab("Test")
+
+gplot(perc,aes(reorder(Test,Error),Error, fill = Test)) + geom_violin(width = 1.5) +  
+  geom_boxplot(fill="white", width = 0.1) + xlab("Test") + coord_flip()
+  
+ggplot(dis3,aes(x=Trial,y=AbsoluteError, fill = Trial)) + geom_boxplot()
+ggplot(dis3,aes(Trial,Error, fill = Display)) + geom_split_violin() + 
+  geom_boxplot(fill = "white", width = .05) + coord_flip()
+ggplot(dis3,aes(Test,Error, fill = as.factor(Display))) + geom_split_violin() + 
+  geom_boxplot(fill = "white", width = .05) + coord_flip()
