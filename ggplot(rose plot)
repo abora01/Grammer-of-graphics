@@ -1,0 +1,21 @@
+data3<- data2 %>% filter(Primary.Type =="ASSAULT")
+data4<- data2 %>% filter(Primary.Type =="KIDNAPPING")
+data5<- data2 %>% filter(Primary.Type =="THEFT")
+data6<- data2 %>% filter(Primary.Type =="NARCOTICS")
+ggplot(data3,aes(x=month1, fill = Primary.Type)) + geom_histogram(breaks = seq(1,12), stat = "count", fill = "darkgreen") + coord_polar() + ggtitle("ASSAULT") +
+ylim(0,2500) + theme_minimal() +
+ 
+scale_x_continuous("",limits=c(.5,12.5),breaks = seq(0,13, by =1), labels = seq(0,13))
+ggplot(data4,aes(x=month1, fill = Primary.Type)) +
+geom_histogram(breaks = seq(1,12), stat = "count", fill = "darkorange") + coord_polar() + ggtitle("KIDNAPPING") +
+ylim(0,20) + theme_minimal() +
+scale_x_continuous("",limits=c(.5,12.5),breaks = seq(0,13, by =1), labels = seq(0,13))
+ggplot(data5,aes(x=month1, fill = Primary.Type)) +
+geom_histogram(breaks = seq(1,12), stat = "count", fill = "darkred") +
+coord_polar() + ggtitle("THEFT") +
+ylim(0,8000) + theme_minimal() +
+scale_x_continuous("",limits=c(0.5,12.5),breaks = seq(0,13, by =1), labels = seq(0,13))
+ggplot(data6,aes(x=month1, fill = Primary.Type)) +
+geom_histogram(breaks = seq(1,12), stat = "count", fill = "darkblue") + coord_polar() + ggtitle("NARCOTICS") +
+ylim(0,1500) + theme_minimal() +
+scale_x_continuous("",limits=c(.5,12.5),breaks = seq(0,13, by =1), labels = seq(0,13))
